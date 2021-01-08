@@ -140,7 +140,7 @@ section .wave.wave2 {
     animation-delay: -5s;
     bottom: 10px;
 }
-
+/*
 section .wave.wave3 {
     animation: animate2 15s linear infinite;
     z-index: 998;
