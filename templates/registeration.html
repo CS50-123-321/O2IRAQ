@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {{ fontawesome_html() }}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>register</title>
     <link rel="stylesheet" href="../static/login.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='expiration.css') }}">
     <link rel="stylesheet" href="../static/all.min.css">
+    <link rel="stylesheet" href="../static/fontawesome.min.css">
     <link rel="stylesheet" href="../static/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -21,29 +22,40 @@
     
 
 </head>
-<body >
-
-                <form method="post">
-                    <input type="text" name="username" placeholder="Type your Name">
-                    <p> -</p>
-                    <input type="email" name="email" placeholder="Your Email">
-                    <p> -</p>
-                    <input type="password" name="password" placeholder="Password">
-                    <p> -</p>
-                    <input type="password" name="confirmation" placeholder="Rewrite Password">
-                    <p> -</p>
-                    <input type="text" name = "name" placeholder="name" >
-                    <p> -</p>
-                    <input type="text" name = "city" placeholder="city" >
-                    <p> -</p>
-                    <input type="text" name = "job" placeholder="job">
-                    <p> -</p>
-                    <input type="text" name = "birthday" placeholder="BD">
-                    <p> -</p>
-                    <input type="text" name = "sex" placeholder="Sex">
-                    <p> -</p>
-                    <input type="submit" value="Create">
+<body style="rgb(245, 245, 245); font-family: 'Lato', sans-serif;>
+    
+    <div class="container-fluid">
+        <div class="main">
+            <div class="form">
+                <i class="far fa-user-circle"></i>
+                <h3>WELCOME</h3>
+                <form class="form-horizontal form-group-lg" method="post">
+                    <input type="text" name="name" class="form-control " placeholder="Type your Name">
+                    <input type="email" name="email" class="form-control" placeholder="Your Email">
+                    <input type="password" name="password" class="form-control" placeholder="Your Password">
+                    <input type="password" name="com-password" class="form-control" placeholder="Repeat Your Password">
+                    <input type="submit" value="Create" class="btn btn-primary">  
                 </form>
+            </div>
+            <div class="iamge">
+                <div class="description">
+                <h1>Wlcome To Your Environment</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum corporis aliquid voluptates numquam quis sit repudiandae culpa. Aperiam, magnam? Maxime fugiat quod, dolorem veniam vitae nihil quisquam et repellendus facere.</p>
+                <a href="#">Read More</a>
+            </div>
+            </div> 
+        </div>
+    </div>
+    <section>
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+    </section>
 
+
+    <script src="js/fontawesome.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
 </body>
 </html>

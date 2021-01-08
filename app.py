@@ -37,14 +37,10 @@ def getin():
 def home():
     """Homepage"""
 
-    current_user = db.execute("select user_name from register where user_id = :user_id", user_id=session["user_id"])
+    """current_user = db.execute("select user_name from register where user_id = :user_id", user_id=session["user_id"])
     current_user = current_user[0]["user_name"]
     current_user = current_user.split()[0]
-    current_user = current_user.capitalize()
-    current_user = db.execute("select user_name from register where user_id = :user_id", user_id=session["user_id"])
-    current_user = current_user[0]["user_name"]
-    current_user = current_user.split()[0]
-    current_user = current_user.capitalize()
+    current_user = current_user.capitalize()"""
     posts = db.execute("select * from user_activity where user_id != 0")
     posts.reverse()
     noti_posts = db.execute("select * from user_activity where user_id != 0 and user_id != :user_id ORDER BY post DESC LIMIT 30",user_id=session["user_id"])
@@ -67,11 +63,11 @@ def register():
         job = request.form.get("job")
         # consider update your database tobe not null.
         # if not username or not password or not sex or not email or not city or not birthday or not job:
-        if not username or not password or not sex or not email or not city or not birthday or not job:
-            return "Make sure to fill the required information!"
+        """if not username or not password or not sex or not email or not city or not birthday or not job:
+            return "Make sure to fill the required information!"""
 
-        if password != confirmation:
-            return "pass != conform", 403
+        """if password != confirmation:
+            return "pass != conform", 403"""
         insertion = db.execute(
             "insert into register (user_name, password, email, sex, birthday, city, job) values (:username,:password, :email, :sex,:birthday,:city, :job)",
             username=username, password=generate_password_hash(password), email=email, sex=sex, birthday=birthday,
