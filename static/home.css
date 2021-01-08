@@ -1,0 +1,362 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #333;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.navbar {
+    min-height: 70px;
+    margin-bottom: 0;
+    background-color: #09b795;
+    border-radius: 0;
+    
+}
+
+.navbar>.container .navbar-brand, 
+.navbar>.container-fluid .navbar-brand {
+    font-size: 35px;
+    margin-top: 7px;
+    color: rgb(241, 233, 233);
+}
+.navbar>.container .navbar-brand span {
+    color: rgb(44, 38, 38);
+}
+
+.navbar .fa-search {
+    margin-top: 23px;
+    transform: translateX(2px);
+}
+
+.navbar [type="text"]{
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    padding-left: 5px;
+    height: 35px;
+    width: 250px;
+    margin-left: 280px;
+    transform: translateY(-5px);
+}
+
+.navbar i {
+    font-weight: 900;
+    font-size: 25px;
+    margin-top: 7px;
+    color:#ffffff;
+    transition: all 0.5s ease-in-out;
+}
+
+.navbar i:hover{
+    color: #333;
+}
+
+
+/* END NAVbar */
+
+
+
+.all {
+    background-color: rgb(245,245,245);
+    overflow: hidden;
+    position: relative;
+
+}
+
+.all .post {
+    width: 100%;
+    
+}
+
+.all .post .image {
+    min-height: 170px;
+    overflow: hidden;
+    border: 2px solid#09b795;
+    margin-bottom: 25px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.all .post .image img {
+    width: 80px;
+    height: 80px;
+    float: left;
+    border-radius: 50%;
+    margin:46px;
+    margin-right: 3px;
+    margin-left: 10px;
+
+}
+
+.all .post .image textarea {
+    display: inline-block;
+    margin-top: 53px;
+}
+
+.all .shear {
+    width: 100%;
+    overflow: hidden;
+    border: 2px solid #09b795;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.all .shear .image-shear span:first-of-type{
+    font-size: 18px;
+
+}
+.all .shear .image-shear span:last-of-type{
+    font-size: 15px;
+    float: right;
+    margin-top: 28px;
+}
+.all .shear .image-shear img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;    
+
+}
+
+.all .shear .info-shear {
+
+}
+
+.all .shear .info-shear p {
+    color: #333;
+    font-size: 18px;
+    line-height: 1.6;
+    padding:10px 15px 0 15px;
+    
+}
+
+.all .shear .info-shear img {
+    width: 100%;
+    max-height: 600px;
+}
+
+.all .shear i{
+    color: rgb(199, 185, 185);
+    font-size: 40px;
+    transition: all 0.5s ease-in-out;
+    margin-top: 10px;
+    margin-left: 10px;
+    
+}
+.all .reach {
+    position: fixed;
+    width: 25%;
+    border: 2px solid #09b795;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    background: rgb(255, 255, 255);
+    
+}
+
+.all .reach h3 {
+    text-align: center;
+   border-bottom: 1px solid #333;
+   color: #333;
+   padding: 10px 5px;
+   transform: translateY(-20px);
+    
+}
+
+.all .reach .media-object {
+    width: 64px;
+    border-radius: 50%;
+
+}
+
+/* reaction */
+
+.openin span {
+    font-size: 16px;
+    color: #555;
+    vertical-align: super;
+    display: inline-block;
+    transition: all .5s ease-in-out;
+
+}
+
+.openin input {
+    padding: 10px;
+    height: 40px;
+    width: 347px;
+    margin-top: 12px;
+    outline: none;
+}
+
+.openin .reaction1,
+.openin .reaction2 {
+    transition: all 0.5s ease-in-out;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.openin .reaction1:hover {
+    background-color: rgb(236, 229, 229);
+    border-radius: 5px;
+}
+.openin .reaction1:hover i,
+.openin .reaction1:hover span{
+    color: #24685a;
+}
+
+.openin .reaction2:hover {
+    background-color: rgb(236, 229, 229);
+    border-radius: 5px;
+}
+.openin .reaction2:hover i,
+.openin .reaction2:hover span{
+    color: #24685a;
+}
+
+input[type="submit"]{
+    background-color: #09b795;
+    padding: 19px 26px;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    border-radius: 5px;
+    transform: translateY(-25px);  
+}
+
+
+input[type="submit"]:hover{
+    box-shadow: 1px 1px 5px #555
+ }
+
+/*input[type="file"]{
+margin-top: 2px;
+font-size: 16px;
+outline: none;
+background-color: #fff;
+border-radius: 50px;
+width: 280px;
+box-shadow: 2px 2px 5px black;
+transform: translateY(-14px);
+    
+}
+::-webkit-file-upload-button{
+    color: #FFF;
+    border-radius: 50px;
+    background-color: #09b795;
+    padding: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+
+
+
+/* start  */
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    transform: translateY(-10px);
+    
+    
+  }
+  
+  .btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 0 2px 1px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 120px;
+    height: 30px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .upload-btn-wrapper:hover .btn{
+      background-color:rgb(170, 168, 168);
+      color: #fff;
+      border-radius: 8px;
+      
+  }
+  
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+ 
+
+
+  /* stat notifiction */
+
+
+
+  .notifi-box{
+    width: 300px;
+    position: absolute;
+    top: 70px;
+    right: 1px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0.0.0.0.19);
+    background-color: #7a7059;
+    display: none;
+    border-radius: 10px;
+}
+
+.notifi-box h2{
+    color: rgb(248, 241, 241);
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.notifi-box h2 span {
+    color: #f00;
+}
+
+.notifi-item{
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding: 15px 5px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+.notifi-item:first-of-type{
+    border-top: 1px solid #eee;
+
+}
+.notifi-item:hover{
+    background-color: #61c2ae;
+}
+
+.notifi-item img {
+    display: block;
+    width: 50px;
+    margin-right:10px ;
+    border-radius: 50%;
+}
+
+.notifi-item .text h4{
+    color: #000;
+    font-size: 16px;
+    margin-top: 10px;
+
+}
+
+.notifi-item .text p {
+    color: #000;
+    font-size: 12px;
+}
+
+
+
+

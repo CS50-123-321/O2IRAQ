@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{ fontawesome_html() }}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='expiration.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+
+    <link rel="stylesheet" href="../static/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/fontawesome.min.css">
+    <link rel="stylesheet" href="../static/all.min.css">
+    <link rel="stylesheet" href="../static/profile.css">
+
+    <title>Profile</title>
+</head>
+<body>
+            <nav class="navbar navbar-default">    
+            <div class="container">
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">O2<span>Iraq</span></a>
+                <input type="text" placeholder="Search" id="ser">
+                <i class="fas fa-search" for="ser"></i>
+                
+                </div>
+        
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">   
+                <li><a href="/home"><i class="fas fa-user"></i></a></li>
+                <li><a href="/notification"><i class="fas fa-bell"></i></a></li>
+                <li><a href="logout"><i class="fas fa-sign-out-alt"></i></a></li>
+                </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+            </nav>
+
+             <!--End Navbar-->
+         <div class="backtop"></div>
+        <!--start profile picture-->
+         <div class="pro">
+             <div class="row">
+                 <div class="col-md-4">
+                     <div class="image-pro">
+                        <img src="../static/munt.jpg">
+                     </div>
+                 </div>
+                 <div class="col-md-8">
+                     <div class="content-pro">
+                         <h3>{{ user_name }}</h3>
+                         <h3>Welcome to my profile.</h3>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <!--End profile picture-->
+
+        <!--start profile skilis & information-->
+         <div class="information">
+             <div class="container">
+                 <h2>About Me</h2>
+                 <div class="row">
+                     <div class="col-md-4">
+                         <div class="info infooo text-center">
+                            <h3>Information</h3>
+                            <span>Country : Iraq-{{ user_city }}</span>
+                            <span>Birth : {{ user_bd }}</span>
+                            <span>Gender : {{ user_sex }}</span>
+                            <span>Job : {{ user_job }}</span>
+                         </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="info text-center">
+                            <h3>about me</h3>
+                            <p>I am a smart and handsome young man, my title is the master and I work in every important and sensitive place so there are a lot of secret organizations chasing me, this is me and this is how I live <br>I love you all</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info contact text-center">
+                            <h3>contact me</h3>
+                            <span><i class="fas fa-phone-alt"></i></span>
+                            <span> 009647800799163(mobile)</span>
+                            <div class="social">
+                                <i class="fab fa-facebook-square"></i>
+                                <span> {{ user_name}}</span><br>
+                                <i class="far fa-envelope"></i>
+                                <span> {{ user_email }}</span><br>
+                                <i class="fab fa-instagram"></i>
+                                <span>{{ user_name}}</span>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+             </div>
+
+         </div>
+
+       <!--End profile skilis & information-->
+
+    
+</body>
+</html>

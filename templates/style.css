@@ -1,0 +1,13 @@
+.rightside, .leftside {
+    height: 100vh;
+    width : 100%;
+
+
+}
+.leftside {
+    background: #27c715;
+}
+
+.rightside {
+    background: #9964ed;
+}

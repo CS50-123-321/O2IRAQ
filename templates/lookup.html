@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lookup</title>
+</head>
+<body>
+Search result:
+
+            {% for name in  lookup_item1  %}
+            <h3><li><a href="/user_profile"><i class="fas fa-sign-out-alt">{{name}}</i></a></li> </h3>
+
+            {% endfor %}
+            {% for name in  lookup_item2  %}
+            <h3><li><a href="/user_profile {{name}}"><i class="fas fa-sign-out-alt">{{name}}</i></a></li> </h3>
+            {% endfor %}
+
+</body>
+</html>

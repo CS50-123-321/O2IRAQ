@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{ fontawesome_html() }}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="../static/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/all.min.css">
+    <link rel="stylesheet" href="../static/home.css">
+
+
+
+<body style="background-color: rgb(245,245,245);">
+    <nav class="navbar navbar-default">    
+    <div class="container">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/home">O2<span>Iraq</span></a>
+
+        <input type="text" placeholder="Search" name="search">
+        <a href="/lookup"> <i class="fas fa-search">< for="Search" ></i></a>
+
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">   
+            <li><a href="/profile"><i class="fas fa-user"></i></a></li>
+            <li><a href=""><i class="fas fa-bell" id="bell"></i></a></li>
+            <li><a href="/logout"><i class="fas fa-sign-out-alt"></i></a></li>
+        </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+    </nav>
+
+    <!--END NAVbar-->
+
+    <div class="container">
+        <div class="all">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="post">
+                        <div class="image">
+                            <img src="../static/person.jpg" alt="">
+                            <form method="post" action="/activity">
+                                <textarea rows="3" cols="75" style="resize:none; outline:none; border-radius: 30px; padding:10px 0 0 10px ;" name = "text_area" placeholder="Share For Your Environment"></textarea>
+                                <input type="submit" value="Post">
+
+                                <!-- <input type="file" accept="image/*"> -->
+
+                                <div class="upload-btn-wrapper">
+                                    <button class="btn">Choose Photos</button>
+                                    <input type="file" name="myfile" />
+                                </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+            
+
+            <!-- Shear post -->
+
+
+            <!--------------------start loop--------------------->
+            {% for post in  posts  %}
+            <div class="shear">
+                <div class="image-shear">
+                    <img src="../static/person.jpg" alt="">
+                    <span>{{ post.user_name }}</span>
+                    <span> {{ post.date }} </span>
+                </div>
+                <div class="info-shear">
+                    <p>{{ post.post }}</p>
+                    <img src="../static/neature.jpg">
+                </div>
+                <div class="openin">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="reaction1">
+                                <i class="fas fa-tree"></i> <span></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="reaction2">
+                                <i class="fas fa-fire-alt"></i> <span>Dislike</span> 
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="reaction3">
+                                <input type="text" name="comment" placeholder="Type Your Comment">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+         <!------------------End loop----------------->
+          {% endfor %}
+        </div>
+
+
+
+            <!-- REACH-->
+
+            <div class="col-md-4">
+                <div class="reach">
+                    <h3>Most Traded</h3>
+                    <div class="media">
+                        <div class="media-left media-middle">
+                        <a href="#">
+                            <img class="media-object" src="../static/profil.png" alt="...">
+                        </a>
+                        </div>
+                        <div class="media-body">
+                        <h4 class="media-heading">Middle aligned media</h4> 
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="media-left media-middle">
+                        <a href="#">
+                            <img class="media-object" src="../static/profil.png" alt="...">
+                        </a>
+                        </div>
+                        <div class="media-body">
+                        <h4 class="media-heading">Middle aligned media</h4> 
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="media-left media-middle">
+                        <a href="#">
+                            <img class="media-object" src="../static/profil.png" alt="...">
+                        </a>
+                        </div>
+                        <div class="media-body">
+                        <h4 class="media-heading">Middle aligned media</h4> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+<!--start-->
+
+
+
+
+
+<div class="notifi-box" id="box">
+    <h2>Notifications</h2>
+    {% for post in  noti_posts  %}
+    <div class="notifi-item">
+
+        <img src="../static/person.jpg">
+        <div class="text">
+            <h4>{{ post.user_name }}</h4>
+            <p>{{ post.post }}</p>
+        </div>
+    </div>
+   {% endfor %}
+
+
+
+
+
+    
+
+</div>
+
+
+
+
+<!--start-->
+
+
+
+
+
+
+
+
+
+
+<script src="../Home%20page/static/jquery-3.5.1.min.js"></script>
+<script src="../Home%20page/static/bootstrap.js"></script>
+<script src="../Home%20page/static/js.js"></script>
+</body>
+</html>
