@@ -252,3 +252,60 @@ background-color: #09b795;
 input[type="submit"]:hover{
     box-shadow: 1px 1px 5px #555
  }
+
+ /* post ------------ */
+
+.color{
+    background-color: #bff0e6;
+    width: 100%;
+}
+.shear {
+    width: 60%;
+    overflow: hidden;
+    border: 2px solid #09b795;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    margin: 40px auto ;
+}
+
+.shear .image-shear span:first-of-type{
+    font-size: 18px;
+
+}
+
+.shear .image-shear span:last-of-type{
+    font-size: 15px;
+    float: right;
+    margin-top: 28px;
+}
+
+.shear .image-shear img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;    
+
+}
+
+.shear .info-shear p {
+    color: #333;
+    font-size: 18px;
+    line-height: 1.6;
+    padding:10px 15px 0 15px;
+    
+}
+
+.shear .info-shear img {
+    width: 100%;
+    max-height: 600px;
+}
+
+
+.shear i{
+    color: rgb(199, 185, 185);
+    font-size: 40px;
+    transition: all 0.5s ease-in-out;
+    margin-top: 10px;
+    margin-left: 10px;
+    
+}
