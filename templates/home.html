@@ -11,29 +11,19 @@
     <link rel="stylesheet" href="../static/all.min.css">
     <link rel="stylesheet" href="../static/home.css">
 
+    <link rel="stylesheet" href="../static/search.css" />
+
 <script>
     function pageRedirect() {
       window.location.href = "http://127.0.0.1:5000/lookup";
     }
     debugger;
-    function Show(){
-
-        var box = document.getElementById('bell');
-
-        if(box.style.display === "none") {
-
-            box.style.display ="block";
-        } else {
-            box.style.display ="none";
-        }
-
-    }
 
 </script>
 
 <body style="background-color: rgb(245,245,245);">
     <form method="post" action="/lookup">
-    <nav class="navbar navbar-default">    
+    <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -44,14 +34,21 @@
         </button>
         <a class="navbar-brand" href="/home">O2<span>Iraq</span></a>
                 <input type="text" placeholder="Search" name="search">
-                <i class="fas fa-search" for="Search" onclick="pageRedirect()"> </i>
+                <i class="fas fa-search" for="Search" onclick="toggleNotifi()"> </i>
 
         </div>
     </form>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">   
             <li><a href="/profile"><i class="fas fa-user"></i></a></li>
-            <li><i class="fas fa-bell" id="bell" onclick="Show"></i></li>
+
+            <li>
+                <div class="icon" onclick="toggleNotifi()">
+                      <img src="../static/bell.png"><span>6</span>
+                </div>
+            </li>
+
+
             <li><a href="/logout"><i class="fas fa-sign-out-alt"></i></a></li>
         </ul>
         </div><!-- /.navbar-collapse -->
@@ -59,7 +56,6 @@
     </nav>
 
     <!--END NAVbar-->
-
     <div class="container">
         <div class="all">
             <div class="row">
@@ -77,11 +73,11 @@
                                     <button class="btn">Choose Photos</button>
                                     <input type="file" name="myfile" />
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>
-            
+
 
             <!-- Shear post -->
 
@@ -107,7 +103,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="reaction2">
-                                <i class="fas fa-fire-alt"></i> <span>Dislike</span> 
+                                <i class="fas fa-fire-alt"></i> <span>Dislike</span>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -137,7 +133,7 @@
                         </a>
                         </div>
                         <div class="media-body">
-                        <h4 class="media-heading">Middle aligned media</h4> 
+                        <h4 class="media-heading">Middle aligned media</h4>
                         </div>
                     </div>
                     <div class="media">
@@ -147,7 +143,7 @@
                         </a>
                         </div>
                         <div class="media-body">
-                        <h4 class="media-heading">Middle aligned media</h4> 
+                        <h4 class="media-heading">Middle aligned media</h4>
                         </div>
                     </div>
                     <div class="media">
@@ -157,7 +153,7 @@
                         </a>
                         </div>
                         <div class="media-body">
-                        <h4 class="media-heading">Middle aligned media</h4> 
+                        <h4 class="media-heading">Middle aligned media</h4>
                         </div>
                     </div>
                 </div>
@@ -172,23 +168,18 @@
 <!--start-->
 
 
-
-
-
-<div class="notifi-box" id="box">
-    <h2>Notifications</h2>
-    {% for post in  noti_posts  %}
-    <div class="notifi-item">
-
-        <img src="../static/person.jpg">
-        <div class="text">
-            <h4>{{ post.user_name }}</h4>
-            <p>{{ post.post }}</p>
+        <div class="notifi-box" id="box">
+            <h2>Notifications <span>6</span></h2>
+           {% for post in noti_posts  %}
+            <div class="notifi-item">
+                <img src="../static/person.jpg">
+                <div class="text">
+                    <h4>{{post.post}}</h4>
+                </div>
+            </div>
+             {% endfor %}
         </div>
-    </div>
-   {% endfor %}
 
-</div>
 
 
 
@@ -201,8 +192,9 @@
 
 
 
-<script src="../static/jquery-3.5.1.min.js"></script>
+
 <script src="../static/bootstrap.js"></script>
+<script src="../static/js1.js"></script>
 </body>
 
 

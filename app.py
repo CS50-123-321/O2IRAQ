@@ -28,10 +28,12 @@ Session(app)
 @app.route("/")
 def getin():
     """Homepage"""
-    noti_posts = db.execute("select * from user_activity where user_id != 0 and user_id != :user_id ORDER BY post DESC LIMIT 30",user_id=1)
-    noti_posts.reverse()
-    #return render_template("search.html",noti_posts=noti_posts)
     return render_template("getin.html")
+
+
+
+
+
 
 @app.route("/home", methods=["GET", "POST"])
 @login_required
@@ -46,8 +48,9 @@ def home():
     posts.reverse()
     noti_posts = db.execute("select * from user_activity where user_id != 0 and user_id != :user_id ORDER BY post DESC LIMIT 30",user_id=session["user_id"])
     noti_posts.reverse()
-    return render_template("home.html", noti_posts = noti_posts)
-    #return render_template("home.html", posts=posts, noti_posts = noti_posts)
+    #return render_template("home.html", noti_posts = noti_posts)
+    return render_template("home.html", posts=posts, noti_posts = noti_posts)
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""

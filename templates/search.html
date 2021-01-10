@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/bootstrap.min.css">
+    <title>Notifigtion</title>
+    <link rel="stylesheet" href="../static/search.css" />
+</head>
+<body style="background-color: rgb(245, 245, 245);">
+
+    <nav>
+
+        <div class="icon" onclick="toggleNotifi()">
+            <img src="../static/bell.png"><span>6</span>
+        </div>
+
+        <div class="notifi-box" id="box">
+            <h2>Notifications <span>6</span></h2>
+           {% for post in noti_posts  %}
+            <div class="notifi-item">
+                <img src="../static/person.jpg">
+                <div class="text">
+                    <h4>{{post.post}}</h4>
+                </div>
+            </div>
+             {% endfor %}
+        </div>
+
+        
+        
+    </nav>
+    <script src="../static/js1.js"></script>
+</body>
+</html>
