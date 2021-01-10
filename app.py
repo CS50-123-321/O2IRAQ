@@ -15,7 +15,7 @@ import datetime as dt
 #he
 app = Flask(__name__)
 # my database
-db = SQL("sqlite:///identifier.sqlite")
+db = SQL("sqlite:///id entifier.sqlite")
 fa = FontAwesome(app)
 # Configure session to use filesystem (instead of signed cookies)
 # session config
@@ -28,9 +28,10 @@ Session(app)
 @app.route("/")
 def getin():
     """Homepage"""
-
+    noti_posts = db.execute("select * from user_activity where user_id != 0 and user_id != :user_id ORDER BY post DESC LIMIT 30",user_id=1)
+    noti_posts.reverse()
+    #return render_template("search.html",noti_posts=noti_posts)
     return render_template("getin.html")
-
 
 @app.route("/home", methods=["GET", "POST"])
 @login_required
@@ -45,8 +46,8 @@ def home():
     posts.reverse()
     noti_posts = db.execute("select * from user_activity where user_id != 0 and user_id != :user_id ORDER BY post DESC LIMIT 30",user_id=session["user_id"])
     noti_posts.reverse()
-
-    return render_template("home.html", posts=posts, noti_posts = noti_posts)
+    return render_template("home.html", noti_posts = noti_posts)
+    #return render_template("home.html", posts=posts, noti_posts = noti_posts)
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""
@@ -121,12 +122,12 @@ def profile():
     user_bd = user_info[0]['birthday']
     posts = db.execute("select * from user_activity where user_id = :user_id", user_id=session["user_id"])
     posts.reverse()
-    counter_insert = db.execute("SELECT max(post_counter) FROM numbers where user_id = :user_id",
-                                user_id=session["user_id"])
+    print(posts)
+    """counter_insert = db.execute("SELECT max(post_counter) FROM numbers where user_id = :user_id",
+                                user_id=session["user_id"])"""
 
     #return render_template("profile.html", user_name=user_name, user_city=user_city, user_bd=user_bd, posts=posts,counter_insert=counter_insert[0]["max(post_counter)"])
-    return render_template("profile.html", user_name=user_name, user_city=user_city, user_bd=user_bd, posts=posts, counter_insert=counter_insert[0]["max(post_counter)"]
-                           ,user_sex= user_sex, user_email=user_email, user_job=user_job)
+    return render_template("profile.html", user_name=user_name, user_city=user_city, user_bd=user_bd, posts=posts,user_sex= user_sex, user_email=user_email, user_job=user_job)
 
 @app.route("/activity", methods=["GET", "POST"])
 @login_required

@@ -112,16 +112,18 @@
 
 
        <div class="color">
+{% for post in posts %}
         <div class="container">
+
              <div class="shear">
                  <div class="image-shear">
-                     <img src="person.jpg" alt="">
-                     <span>Aya Alani</span>
-                     <span>2021/1/22</span>
+                     <img src="../static/person.jpg" alt="">
+                     <span>{{ post.user_name }}</span>
+                     <span></span>
                  </div>
                  <div class="info-shear">
-                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas nam possimus beatae culpa voluptatum et hic. Sed harum maiores vel? beatae culpa voluptatum et hicbeatae culpa voluptatum et hic</p>
-                     <img src="neature.jpg">
+                     <p>{{ post.post }}</p>
+                     <img src="../static/neature.jpg" alt="">
                  </div>
                  <div class="openin">
                      <div class="row">
@@ -137,15 +139,22 @@
                          </div>
                          <div class="col-md-3">
                              <div class="reaction3">
-                                 <input type="text" name="comment" placeholder="Type Your Comment">
+                                 <label>
+                                     <input type="text" name="comment" placeholder="Type Your Comment">
+                                 </label>
                              </div>
+
                          </div>
                      </div>
-                 </div>
-         </div>    
+
+             </div>
+
+         </div>
+
     </div>
+{% endfor %}
  </div>
 
-    
+
 </body>
 </html>
