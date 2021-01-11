@@ -46,7 +46,10 @@
     width: 400px;
     
 }
-*/
+
+
+
+
 
 nav {
     align-items: center;
@@ -54,6 +57,7 @@ nav {
     height: 60px;
     position: relative;
 }
+
 
 .icon {
     cursor: pointer;
@@ -80,40 +84,49 @@ nav {
     
 }
 
-.icon:hover{opacity: .7;}
+.icon:hover{opacity: 8;}
+
+*/
+
+/* Star style of notification*/
 
 
 .notifi-box{
     width: 300px;
-    height: 100px;
-    opacity: 50;
+    opacity: 1;
     position: absolute;
     top: 63px;
     right: 35px;
+    background-color: rgb(156, 152, 152);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0.0.0.0.19);
+    border-bottom-left-radius:10px ;
+    border-bottom-right-radius:10px ;
+    height:400px; 
+    overflow:scroll;
 }
 
 .notifi-box h2{
-    font-size: 14px;
+    font-size: 24px;
     padding: 10px;
     border-bottom: 1px solid #eee;
-    color:#999;
+    color:rgb(29, 28, 28);
+    text-align: center;
 }
 
 .notifi-box h2 span {
-    color: #f00;
+    color: rgb(59, 53, 53);
 }
 
 .notifi-item{
     display: flex;
     border-bottom: 1px solid #eee;
-    padding: 15px 5px;
-    margin-bottom: 15px;
+    padding: 10px 5px;
     cursor: pointer;
+    background-color: rgb(156, 152, 152);
 }
 
 .notifi-item:hover{
-    background-color: #eee;
+    background-color: rgb(180, 177, 177);
 }
 
 .notifi-item img {
@@ -124,13 +137,17 @@ nav {
 }
 
 .notifi-item .text h4{
-    color: #777;
-    font-size: 16px;
+    color: rgb(32, 32, 32);
+    font-size: 18px;
     margin-top: 10px;
 
 }
 
 .notifi-item .text p {
-    color: #aaa;
-    font-size: 12px;
+    color: rgb(32, 32, 32);
+    font-size: 16px;
 }
+
+/* End style of notification*/
+
+

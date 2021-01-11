@@ -8,7 +8,8 @@ function toggleNotifi(){
     down=false;
 }else {
     box.style.height = '510px';
-    box.style.opacity = 7;
+    box.style.opacity = 1;
     down=true;
 }
 }
+

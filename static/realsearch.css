@@ -1,0 +1,23 @@
+.search-box {
+    height: 200px;
+    width: 260px;
+    background-color: rgb(18 ,204, 166);
+    position: absolute;
+    top: 55px;
+    right: 44%;
+    border-bottom-left-radius:10px ;
+    border-bottom-right-radius:10px ;
+    display: none;
+}
+
+.search-box img{
+    display: inline-block;
+    width: 50px;
+    margin-top: 5px;
+    margin-left:5px ;
+    border-radius: 50%;
+}
+
+.search-box .text{
+    display: inline-block;
+}

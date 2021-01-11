@@ -12,12 +12,10 @@
     <link rel="stylesheet" href="../static/home.css">
 
     <link rel="stylesheet" href="../static/search.css" />
-
+   <link rel="stylesheet" href="../static/realsearch.css">
 <script>
-    function pageRedirect() {
-      window.location.href = "http://127.0.0.1:5000/lookup";
-    }
-    debugger;
+    
+   
 
 </script>
 
@@ -33,20 +31,18 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/home">O2<span>Iraq</span></a>
-                <input type="text" placeholder="Search" name="search">
-                <i class="fas fa-search" for="Search" onclick="toggleNotifi()"> </i>
+                <input type="text" placeholder="Search" name="search" onclick="toggSearch()">
+                <i class="fas fa-search" for="Search"> </i>
 
         </div>
     </form>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">   
+            <li><i class="fas fa-bell" id="bell" onclick="toggleNotifi()"></i></li>
             <li><a href="/profile"><i class="fas fa-user"></i></a></li>
+            
 
-            <li>
-                <div class="icon" onclick="toggleNotifi()">
-                      <img src="../static/bell.png"><span>6</span>
-                </div>
-            </li>
+       
 
 
             <li><a href="/logout"><i class="fas fa-sign-out-alt"></i></a></li>
@@ -168,13 +164,14 @@
 <!--start-->
 
 
-        <div class="notifi-box" id="box">
+        <div class="notifi-box" id="box" style="height: 0px; opacity: 0;">
             <h2>Notifications <span>6</span></h2>
            {% for post in noti_posts  %}
             <div class="notifi-item">
                 <img src="../static/person.jpg">
                 <div class="text">
                     <h4>{{post.post}}</h4>
+                    <p>aya commented in your post</p>
                 </div>
             </div>
              {% endfor %}
@@ -184,8 +181,17 @@
 
 
 
-<!--start-->
+<!--start Search-->
 
+
+
+    <div class="search-box" id="search" style="height: 0px; opacity: 0;">
+        <img src="../static/person.jpg">
+        <div class="text">
+            <h4>Aya alani</h4>
+        </div>
+
+    </div>
 
 
 
@@ -195,6 +201,7 @@
 
 <script src="../static/bootstrap.js"></script>
 <script src="../static/js1.js"></script>
+<script src="../static/js-search.js"></script>
 </body>
 
 

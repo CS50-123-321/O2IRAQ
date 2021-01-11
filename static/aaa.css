@@ -116,4 +116,18 @@ input[type=submit] {
   
 }
 
+.partlogin p{
+    position: absolute;
+    top: 500px;
+    left:160px;
+    
+}
 
+.partlogin p a{
+    text-decoration: none;
+    color:#09b795 ;
+}
+
+.partlogin p a:hover {
+    border-bottom: 2px solid #333;
+}
