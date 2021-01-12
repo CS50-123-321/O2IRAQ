@@ -24,6 +24,18 @@ app.config["SESSION_PERMANENT"] = False
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
+"""@app.route("/o", methods=["GET", "POST"])
+def jj():
+    if request.method == "POST":
+        image = request.files["image"]
+        image = image.save(image.filename)
+        return render_template("tst.html")
+
+    else:
+        return render_template("tst.html")"""
+
+
+
 @app.route("/", methods=["GET", "POST"])
 def getin():
     """Homepage"""
@@ -42,10 +54,9 @@ def getin():
             return "You don't have an count!"
         session["user_id"] = check[0]["user_id"]
         # abubkr
-
         return redirect("/home")
     else:
-        return render_template("login.html")
+        return render_template("login1.html")
 
 
 @app.route("/home", methods=["GET", "POST"])
@@ -56,12 +67,20 @@ def home():
     current_user = current_user[0]["user_name"]
     current_user = current_user.split()[0]
     current_user = current_user.capitalize()"""
+    """image = request.files["myfile"]
+    # image = image.save(image.filename)
+    #pic_insert = db.execute("insert into register(profile_pic) values (:image)", image=image.filename)
+    print ("--------------------------------->", pic_insert)"""
+    current_user = db.execute("select user_name from register where user_id = :user_id", user_id=session["user_id"])
+    pic_call = db.execute("select profile_pic from register where user_name=:user_name", user_name = current_user[0]["user_name"])
+    print("home:---------------------------------->",pic_call)
     posts = db.execute("select * from user_activity where user_id != 0")
     posts.reverse()
+
     noti_posts = db.execute("select * from user_activity where user_id != 0 and user_id != :user_id ORDER BY post DESC LIMIT 30",user_id=session["user_id"])
     noti_posts.reverse()
     #return render_template("home.html", noti_posts = noti_posts)
-    return render_template("home.html", posts=posts, noti_posts=noti_posts)
+    return render_template("home.html", posts=posts, noti_posts=noti_posts,pic_call = pic_call[0]["profile_pic"])
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -117,11 +136,8 @@ def login():
 @app.route("/logout")
 def logout():
     """Log user out"""
-
     session.clear()
-
     return redirect("/")
-
 
 @app.route("/profile", methods=["GET", "POST"])
 @login_required
@@ -150,7 +166,10 @@ def activity():
         return render_template("activity.html")
     else:
         content = request.form.get("text_area")
-        print("------------",content)
+        """image = request.files["myfile"]
+        print("activity------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", image)
+        pic_insert = db.execute("insert into register(profile_pic) values (:image)", image = image.filename)
+        image = image.save('C:/Users/ALFA/PycharmProjects/O2-IRAQ/static/pic/ image.filename', 'JPG')"""
 
         name = db.execute("select user_name from register where user_id = :user_id", user_id=session["user_id"])
         name = name[0]["user_name"]
@@ -170,11 +189,9 @@ def activity():
 def convert_pic():
     if request.method == "POST":
         image = request.files["image"]
-        with open(image, "rb") as file:
-            image = file.read()
-        pic_insert = db.execute("insert into register(profile_pic) values (:image)", image=image)
+        #image = image.save(image.filename)
+        pic_insert = db.execute("insert into register(profile_pic) values (:image)", image = image.filename)
     else:
-
         return render_template('tst.html')
 
 @app.route("/lookup", methods=["GET", "POST"])

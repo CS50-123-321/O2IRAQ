@@ -41,8 +41,8 @@ img {
     height: 450px;
     background-color:#fff;
     position:absolute ;
-    top: 220px;
-    left:27px;
+    margin-top: 180px;
+    margin-left: 30px;
     border-radius: 20px;
 }
 
