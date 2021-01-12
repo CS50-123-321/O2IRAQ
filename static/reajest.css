@@ -5,23 +5,21 @@
 }
 
 img {
-    width: 90%;
-    margin-top: 70px;
-    transform: translateX(30px);
+    width: 95%;
+    margin-top: 50px;
+    transform: translateX(-10px);
 }
 
 
 .all {
-    position: relative;
+    
 
 }
 .regest .all {
-    width: 600px;
+    width: 550px;
     height: 700px;
     background-color:rgb(167, 216, 149);
-    position: absolute;
-    top: 50px;
-    left: 40px;
+    margin: 60px auto;
     border-radius: 30px;
     box-shadow: 
     -2px -2px 10px rgb(211, 208, 208);
@@ -29,7 +27,7 @@ img {
 
 .regest .all h1 {
     position: absolute;
-    top: 50px;
+    top: 100px;
     left: 190px;
     font-size: 54px;
     color: rgb(120, 157, 127);
@@ -37,12 +35,12 @@ img {
 }
 
 .regest .all .info {
-    width: 90%;
+    width: 80%;
     height: 500px;
     background-color:#fff;
     position:absolute ;
-    top: 180px;
-    left:30px;
+    top: 230px;
+    left:60px;
     border-radius: 20px;
 }
 
@@ -61,7 +59,7 @@ img {
     transform: translateY(125px);
     border: none;
     border-bottom: 2px solid rgb(146, 177, 169);
-    width: 400px;
+    width: 350px;
     font-size: 16px;
     outline: none;
 }
@@ -85,13 +83,14 @@ img {
     border: 2px solid rgb(184, 181, 181);;
     border-radius: 5px;
     height: 25px;
+    color: rgb(83, 82, 82);
     
 }
 
 .regest .all .info [type=submit] {
     position: absolute;
     top: 299px;
-    left: 100px;
+    left: 60px;
     background-color: rgb(167, 216, 149);
     border: none;
     width: 250px;

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
     <link rel="stylesheet" href="../static/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/all.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="../static/reajest.css">
 </head>
 <body style="background-color:rgb(245,245,245);">
@@ -20,51 +20,47 @@
                         <div class="info">
                             <h1>Register</h1>
 
-                            <form method="post">
-                                <input type="text" placeholder="Enter Your Name"  name="username">
-                                <input type="email" placeholder="Enter Your Email" name="email">
-                                <input type="password" placeholder="Enter Your password" name="password">
-                                <input type="password" placeholder="Confirm Your password" name="confirmation">
-                                <input type="submit" value="Register Now" required>
-
+                            <form>
+                                <input type="text" placeholder="Enter Your Name" > 
+                                <input type="email" placeholder="Enter Your Email">
+                                <input type="password" placeholder="Enter Your password">
+                                <input type="password" placeholder="Confirm Your password">
+                            </form>
 
                             <div class="data">
-                                <label>
-                                    <select name="sex">
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                    </select>
-                                </label>
+                                <select name="Sex">
+                                    <option value="">Male</option>
+                                    <option value="">Female</option>
+                                </select>
 
+                                <select name="City">
+                                    <option value="">Baghdad</option>
+                                    <option value="">Basra</option>
+                                    <option value="">AL-anbar</option>
+                                    <option value="">Babil</option>
+                                    <option value="">Dhi Qar</option>
+                                    <option value="">AL-Qadisiyah</option>
+                                    <option value="">Diyala</option>
+                                    <option value="">Duhok</option>
+                                    <option value="">Erbil</option>
+                                    <option value="">Sulymaniyah</option>
+                                    <option value="">Halabja</option>
+                                    <option value="">Karkuk</option>
+                                    <option value="">Karbala</option>
+                                    <option value="">Maysan</option>
+                                    <option value="">Muthanna</option>
+                                    <option value="">Najaf</option>
+                                    <option value="">Wasit</option>
+                                    <option value="">Salahdin</option>
+                                    <option value="">Mosul</option>
+                                </select>
 
-                                <label>
-                                    <select name="city">
-                                        <option value="Baghdad">Baghdad</option>
-                                        <option value="Basra">Basra</option>
-                                        <option value="AL-anbar">AL-anbar</option>
-                                        <option value="Babil">Babil</option>
-                                        <option value="Dhi Qar">Dhi Qar</option>
-                                        <option value="AL-Qadisiyah">AL-Qadisiyah</option>
-                                        <option value="Diyala">Diyala</option>
-                                        <option value="Duhok">Duhok</option>
-                                        <option value="Erbil">Erbil</option>
-                                        <option value="Sulymaniyah">Sulymaniyah</option>
-                                        <option value="Halabja">Halabja</option>
-                                        <option value="Karkuk">Karkuk</option>
-                                        <option value="Karbala">Karbala</option>
-                                        <option value="Maysan">Maysan</option>
-                                        <option value="Muthanna">Muthanna</option>
-                                        <option value="Najaf">Najaf</option>
-                                        <option value="Wasit">Wasit</option>
-                                        <option value="Salahdin">Salahdin</option>
-                                        <option value="Mosul">Mosul</option>
-                                    </select>
-                                </label>
-                                    </form>
 
                             </div>
 
-
+                            <form>
+                                <input type="submit" value="Register Now">
+                            </form>
                         </div>
 
 
