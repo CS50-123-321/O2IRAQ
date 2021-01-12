@@ -39,8 +39,8 @@ img {
     height: 500px;
     background-color:#fff;
     position:absolute ;
-    top: 230px;
-    left:60px;
+    margin-top: 180px;
+    margin-left: 30px;
     border-radius: 20px;
 }
 
