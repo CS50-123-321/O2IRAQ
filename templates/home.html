@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="../static/search.css" />
    <link rel="stylesheet" href="../static/realsearch.css">
 <script>
-    
-   
+
+
 
 
 </script>
@@ -38,12 +38,12 @@
         </div>
     </form>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">   
+        <ul class="nav navbar-nav navbar-right">
             <li><i class="fas fa-bell" id="bell" onclick="toggleNotifi()"></i></li>
             <li><a href="/profile"><i class="fas fa-user"></i></a></li>
-            
 
-       
+
+
 
 
             <li><a href="/logout"><i class="fas fa-sign-out-alt"></i></a></li>
@@ -171,17 +171,13 @@
             <div class="notifi-item">
                 <img src="../static/person.jpg">
                 <div class="text">
-                    <h4>{{post.post}}</h4>
-                    <p>aya commented in your post</p>
+                    <h>{{post.user_name}} <span> {{post.date}}</span> </h>
+
+                    <p>{{post.post}}</p>
                 </div>
             </div>
              {% endfor %}
         </div>
-
-
-
-
-
 <!--start Search-->
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>lookup</title>
@@ -8,12 +8,15 @@
 Search result:
 
             {% for name in  lookup_item1  %}
-            <h3><li><a href="/user_profile"><i class="fas fa-sign-out-alt">{{name}}</i></a></li> </h3>
-
+            <h3><li > <i class="fas fa-sign-out-alt" id="hl" ">
+            {{name}}
+            </i></li> </h3>
             {% endfor %}
             {% for name in  lookup_item2  %}
-            <h3><li><a href="/user_profile {{name}}"><i class="fas fa-sign-out-alt">{{name}}</i></a></li> </h3>
+            <h3><li><a href="/user_profile"><i class="fas fa-sign-out-alt">{{name}}</i></a></li> </h3>
             {% endfor %}
 
+<script src="../static/1.js"></script>
 </body>
+
 </html>

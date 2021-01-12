@@ -24,23 +24,35 @@ app.config["SESSION_PERMANENT"] = False
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
-
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def getin():
     """Homepage"""
-    return render_template("getin.html")
+    session.clear()
+    if request.method == "POST":
 
+        username = request.form.get("username")
+        password = request.form.get("password")
+        if not username:
+            return "must provide username"
+        if not password:
+            return "must provide password"
+        check = db.execute("select * from register where user_name = :username", username=username)
+        password_decrption = check_password_hash(check[0]["password"], request.form.get("password"))
+        if not check or password_decrption == False:
+            return "You don't have an count!"
+        session["user_id"] = check[0]["user_id"]
+        # abubkr
 
-
-
+        return redirect("/home")
+    else:
+        return render_template("login.html")
 
 
 @app.route("/home", methods=["GET", "POST"])
 @login_required
 def home():
     """Homepage"""
-
-    """current_user = db.execute("select user_name from register where user_id = :user_id", user_id=session["user_id"])
+    """Current_user = db.execute("select user_name from register where user_id = :user_id", user_id=session["user_id"])
     current_user = current_user[0]["user_name"]
     current_user = current_user.split()[0]
     current_user = current_user.capitalize()"""
@@ -48,8 +60,8 @@ def home():
     posts.reverse()
     noti_posts = db.execute("select * from user_activity where user_id != 0 and user_id != :user_id ORDER BY post DESC LIMIT 30",user_id=session["user_id"])
     noti_posts.reverse()
-    return render_template("home.html", noti_posts = noti_posts)
-    #return render_template("home.html", posts=posts, noti_posts = noti_posts)
+    #return render_template("home.html", noti_posts = noti_posts)
+    return render_template("home.html", posts=posts, noti_posts=noti_posts)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -63,22 +75,21 @@ def register():
         confirmation = request.form.get("confirmation")
         sex = request.form.get("sex")
         city = request.form.get("city")
-        birthday = request.form.get("birthday")
-        job = request.form.get("job")
+        print("------->",username, password, email, confirmation, sex, city)
+        #birthday = request.form.get("birthday")
+        #job = request.form.get("job")
         # consider update your database tobe not null.
         # if not username or not password or not sex or not email or not city or not birthday or not job:
-        """if not username or not password or not sex or not email or not city or not birthday or not job:
+        """if not username or not password or not sex or not email or not city:
             return "Make sure to fill the required information!"""
-
-        """if password != confirmation:
-            return "pass != conform", 403"""
+        if password != confirmation:
+            return "pass != conform", 403
         insertion = db.execute(
-            "insert into register (user_name, password, email, sex, birthday, city, job) values (:username,:password, :email, :sex,:birthday,:city, :job)",
-            username=username, password=generate_password_hash(password), email=email, sex=sex, birthday=birthday,
-            city=city, job=job)
+            "insert into register (user_name, password, email, sex, city) values (:username,:password, :email, :sex,:city)",
+            username=username, password=generate_password_hash(password), email=email, sex=sex, city=city)
+
         session["user_id"] = insertion
         return redirect("/home")
-
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
