@@ -41,11 +41,6 @@
         <ul class="nav navbar-nav navbar-right">
             <li><i class="fas fa-bell" id="bell" onclick="toggleNotifi()"></i></li>
             <li><a href="/profile"><i class="fas fa-user"></i></a></li>
-
-
-
-
-
             <li><a href="/logout"><i class="fas fa-sign-out-alt"></i></a></li>
         </ul>
         </div><!-- /.navbar-collapse -->
@@ -59,7 +54,7 @@
                 <div class="col-md-8">
                     <div class="post">
                         <div class="image">
-                            <img src="../static/person.jpg" alt="">
+                             <img src="{{ url_for('static', filename='profile_pictures/' + profile_pic)}}">
                             <form method="post" action="/activity" ENCTYPE="multipart/form-data">
                                 <textarea rows="3" cols="75" style="resize:none; outline:none; border-radius: 30px; padding:10px 0 0 10px ;" name = "text_area" placeholder="Share For Your Environment"></textarea>
                                 <input type="submit" value="Post">
@@ -78,18 +73,18 @@
 
             <!-- Shear post -->
 
-
             <!--------------------start loop--------------------->
-            {% for post in  posts  %}
+            {% for post  in  posts  %}
+
             <div class="shear">
                 <div class="image-shear">
-                    <img src="../static/aya.jpg" alt="">
+                    <img src="{{ url_for('static', filename='profile_pictures/' + profile_pic)}}">
                     <span>{{ post.user_name }}</span>
                     <span> {{ post.date }} </span>
                 </div>
                 <div class="info-shear">
                     <p>{{ post.post }}</p>
-                    <img src="../static/neature.jpg" alt="...">
+                    <img src="{{ url_for('static', filename='profile_pictures/' + post.post_pic) }}">
                 </div>
                 <div class="openin">
                     <div class="row">
@@ -113,145 +108,9 @@
             </div>
 
          <!------------------End loop----------------->
-          {% endfor %}
 
-            <div class="shear">
-                <div class="image-shear">
-                    <img src="../static/muntadher.jpg" alt="">
-                    <span>Muntadher Alabdli</span>
-                    <span> 2021.1.11 4:00 PM </span>
-                </div>
-                <div class="info-shear">
-                    <p>The population in Iraq as of 2015 was a little over 37 million. With the median age of about 20 years old, it is a relatively young country. It is also a fast-growing one: the population has increased several times over since 1950 and, with a current growth rate of about 3%, is projected to add another million people a year for the next 20 years</p>
-                    <img src="../static/p2.jpg" alt="...">
-                </div>
-                <div class="openin">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="reaction1">
-                                <i class="fas fa-tree"></i> <span></span>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="reaction2">
-                                <i class="fas fa-fire-alt"></i> <span>Care</span>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="reaction3">
-                                <input type="text" name="comment" placeholder="Type Your Comment">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    {% endfor %}
 
-         <!------------------End loop----------------->
-           <div class="shear">
-                <div class="image-shear">
-                    <img src="../static/bkr.jpg" alt="">
-                    <span>Abubkr Osama</span>
-                    <span> 2021.1.12 4:00 PM </span>
-                </div>
-                <div class="info-shear">
-
-                    <p>The population in Iraq as of 2015 was a little over 37 million. With the median age of about 20 years old, it is a relatively young country. It is also a fast-growing one: the population has increased several times over since 1950 and, with a current growth rate of about 3%, is projected to add another million people a year for the next 20 years</p>
-                    <img src="../static/p1.jpg" alt="...">
-                </div>
-                <div class="openin">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="reaction1">
-                                <i class="fas fa-tree"></i> <span></span>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="reaction2">
-                                <i class="fas fa-fire-alt"></i> <span>Care</span>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="reaction3">
-                                <input type="text" name="comment" placeholder="Type Your Comment">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                    <div class="shear">
-                <div class="image-shear">
-                    <img src="../static/aya.jpg" alt="">
-                    <span>Aya alani</span>
-                    <span> 2021.1.12 4:00 PM </span>
-                </div>
-                <div class="info-shear">
-                    <p>التلوث البيئي ـ موت بطيء يهدد حياة العراقيين
-يعاني العراق من نسبة تلوث كبيرة في الهواء تسببت فيها عوامل عدة منها ما هو راجع لعوامل طبيعية ومنها ما هو من صنع الإنسان في وقت السلم أو الحرب. دويتشه فيله تسلط الضوء على ما يعتبره المختصون "كارثة" تهدد حياة العراقيين.</p>
-                    <img src="../static/p3.jpg" alt="...">
-                </div>
-                <div class="openin">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="reaction1">
-                                <i class="fas fa-tree"></i> <span></span>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="reaction2">
-                                <i class="fas fa-fire-alt"></i> <span>Care</span>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="reaction3">
-                                <input type="text" name="comment" placeholder="Type Your Comment">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-            <!-- REACH-->
-
-            <div class="col-md-4">
-                <div class="reach">
-                    <h3>Most Traded</h3>
-                    <div class="media">
-                        <div class="media-left media-middle">
-                        <a href="#">
-                            <img class="media-object" src="../static/profil.png" alt="...">
-                        </a>
-                        </div>
-                        <div class="media-body">
-                        <h4 class="media-heading">Middle aligned media</h4>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="media-left media-middle">
-                        <a href="#">
-                            <img class="media-object" src="../static/profil.png" alt="...">
-                        </a>
-                        </div>
-                        <div class="media-body">
-                        <h4 class="media-heading">Middle aligned media</h4>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="media-left media-middle">
-                        <a href="#">
-                            <img class="media-object" src="../static/profil.png" alt="...">
-                        </a>
-                        </div>
-                        <div class="media-body">
-                        <h4 class="media-heading">Middle aligned media</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     </div>
 
 
@@ -264,7 +123,7 @@
             <h2>Notifications <span>6</span></h2>
            {% for post in noti_posts  %}
             <div class="notifi-item">
-                <img src="../static/person.jpg">
+                <img src="{{ url_for('static', filename='profile_pictures/' + profile_pic)}}">
                 <div class="text">
                     <h>{{post.user_name}} <span> {{post.date}}</span> </h>
 
@@ -273,30 +132,6 @@
             </div>
              {% endfor %}
 
-            <div class="notifi-item">
-                <img src="../static/person.jpg">
-                <div class="text">
-                    <h>Ahmed ali</h>
-
-                    <p>ali has new post: The population has increased several times over since 1950 </p>
-                </div>
-            </div>
-                        <div class="notifi-item">
-                <img src="../static/aya.jpg">
-                <div class="text">
-                    <h>Aya </h>
-
-                    <p>with a current growth rate of about 3%, is projected to add another </p>
-                </div>
-            </div>
-                      <div class="notifi-item">
-                <img src="../static/bkr.jpg">
-                <div class="text">
-                    <h>Aya </h>
-
-                    <p>In the north-east to less than 100mm/year over 60% of the country in the south</p>
-                </div>
-            </div>
 
         </div>
 <!--start Search-->

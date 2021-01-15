@@ -42,16 +42,27 @@
              <!--End Navbar-->
          <div class="backtop"></div>
         <!--start profile picture-->
-         <div class="pro">
+        <div class="pro">
+
              <div class="row">
                  <div class="col-md-4">
                      <div class="image-pro">
-                        <img src="../static/aya.jpg">
+                         <img src="{{ url_for('static', filename='profile_pictures/' + profile_pic)}}">
+
                      </div>
                  </div>
                  <div class="col-md-8">
                      <div class="content-pro">
                          <h3>{{ user_name }}</h3>
+                                                          -------
+                                <form method="post" action="/uploading_pic" ENCTYPE="multipart/form-data">
+                                <div class="upload-btn-wrapper">
+                                    <button class="btn">Choose Photos</button>
+                                    <input type="file" name="profile_pic" />
+                                </div>
+                                </form>
+                                --------
+
                          <h3>Welcome to my profile.</h3>
                      </div>
                  </div>
@@ -115,13 +126,13 @@
 
              <div class="shear">
                  <div class="image-shear">
-                     <img src="../static/person.jpg" alt="">
+                     <img src="{{ url_for('static', filename='profile_pictures/' + profile_pic)}}">
                      <span>{{ post.user_name }}</span>
                      <span></span>
                  </div>
                  <div class="info-shear">
                      <p>{{ post.post }}</p>
-                     <img src="../static/neature.jpg" alt="">
+                     <img src="{{ url_for('static', filename='profile_pictures/' + post.post_pic)}}">
                  </div>
                  <div class="openin">
                      <div class="row">
