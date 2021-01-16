@@ -67,34 +67,34 @@ def log_in():
         return render_template("login1.html")
 
 
+
+
 @app.route("/home", methods=["GET", "POST"])
 @login_required
 def home():
     """Homepage"""
-
+    """ Post picture details"""
     current_user = db.execute("select user_name from register where user_id = :user_id", user_id=session["user_id"])
-    pic_call = db.execute("select post_pic from user_activity where user_name=:user_name ORDER BY post_pic DESC LIMIT 1", user_name = current_user[0]["user_name"])
+    pic_call = db.execute("select post_pic from user_activity where user_name=:user_name ", user_name = current_user[0]["user_name"])
     if pic_call:
         pic_call = pic_call[0]["post_pic"]
     else:
         pic_call = db.execute(
-            "select post_pic from user_activity where user_name=:user_name ORDER BY post_pic DESC LIMIT 1",
-            user_name=17)
-        user_profile_pic = pic_call[0]["profile_pic"]
-
-
-    print("home:---------------------------------->",pic_call)
-    user_profile_pic = db.execute("select profile_pic from register where user_id = :user_id", user_id=session["user_id"])
-
-    if user_profile_pic:
+            "select post_pic from user_activity where user_id=0")
+        pic_call = pic_call[0]["post_pic"]
+    print ("home:---------------------------------->",pic_call)
+    """ profile picture details"""
+    user_profile_pic = db.execute("select profile_pic from register where user_name=:user_name ", user_name = current_user[0]["user_name"])
+    print(user_profile_pic)
+    if user_profile_pic[0]["profile_pic"] is not None:
         user_profile_pic = user_profile_pic[0]["profile_pic"]
     else:
-        user_profile_pic = db.execute("select profile_pic from register where user_id = :user_id",
-                                      user_id=session["user_id"])
+        user_profile_pic = db.execute("select profile_pic from register where user_id = 0")
         user_profile_pic = user_profile_pic[0]["profile_pic"]
 
     """Posts and Notifications"""
     posts = db.execute("select * from user_activity where user_id != 0")
+
     posts.reverse()
     noti_posts = db.execute("select * from user_activity where user_id != 0 and user_id != :user_id ORDER BY post DESC LIMIT 30",user_id=session["user_id"])
     noti_posts.reverse()
@@ -175,7 +175,12 @@ def personal_pic():
 @login_required
 def profile():
     user_info = db.execute("select * from register where user_id = :user_id", user_id=session["user_id"])
-    profile_pic = user_info[0]['profile_pic']
+    if  user_info[0]['profile_pic'] is not None:
+         profile_pic = user_info[0]['profile_pic']
+    else:
+        profile_pic = db.execute("select profile_pic from register where user_id = 0")
+        profile_pic = profile_pic[0]["profile_pic"]
+
     user_name = user_info[0]['user_name']
     user_name = user_name.capitalize()
     user_city = user_info[0]['city']
@@ -201,13 +206,20 @@ def activity():
         content = request.form.get("text_area")
         image = request.files["myfile"]
         path = "C:/Users/ALFA/PycharmProjects/O2-IRAQ/static/pic/"
-        image1 = image.save(path + image.filename)
-        #pic_insert = db.execute("insert into user_activity(post_pic) values (:image)", image = image.filename)
-        #print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", pic_insert)
+
+
         name = db.execute("select user_name from register where user_id = :user_id", user_id=session["user_id"])
         name = name[0]["user_name"]
-        content_insert = db.execute("insert into user_activity (post, user_name, user_id, date, post_pic)values (:content,:name,:user_id, current_timestamp, :image)",
-            content=content, name=name, user_id=session["user_id"],image = image.filename)
+        if not image:
+            content_insert = db.execute(
+                "insert into user_activity (post, user_name, user_id, date)values (:content,:name,:user_id, current_timestamp)",
+                content=content, name=name, user_id=session["user_id"])
+        else:
+            image1 = image.save(path + image.filename)
+            content_insert = db.execute(
+                "insert into user_activity (post, user_name, user_id, date, post_pic)values (:content,:name,:user_id, current_timestamp, :image)",
+                content=content, name=name, user_id=session["user_id"], image=image.filename)
+
         # consider using forign key
         post_counter = db.execute("SELECT COUNT(post) FROM user_activity WHERE user_id=:user_id",
                                   user_id=session["user_id"])

@@ -84,7 +84,9 @@
                 </div>
                 <div class="info-shear">
                     <p>{{ post.post }}</p>
-                    <img src="{{ url_for('static', filename='profile_pictures/' + post.post_pic) }}">
+                    {% if post.post_pic %}
+                        <img src="{{ url_for('static', filename='profile_pictures/' + post.post_pic) }}">
+                    {% endif %}
                 </div>
                 <div class="openin">
                     <div class="row">
@@ -110,6 +112,7 @@
          <!------------------End loop----------------->
 
                     {% endfor %}
+
 
     </div>
 
