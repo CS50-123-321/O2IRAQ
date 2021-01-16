@@ -10,16 +10,44 @@
     <link rel="stylesheet" href="../static/bootstrap.min.css">
     <link rel="stylesheet" href="../static/all.min.css">
     <link rel="stylesheet" href="../static/home.css">
-
+    <link href="https://file.myfontastic.com/QcwnemQyaiC6zhWfDbGgvE/icons.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../static/search.css" />
    <link rel="stylesheet" href="../static/realsearch.css">
-<script>
+<style>
 
+    h1 {
+      font-weight: 100;
+      width: 430px;
+      background-color: #e1306c;
+      padding: 10px;
+      color: white;
+      margin-top: 0;
+      font-size: 24px;
+    }
+    .post {
+      margin: 0;
+    }
+    img {
+      width: 450px;
+    }
 
+    .like i {
+      cursor: pointer;
+    }
+    .liked i {
+      color: red;
+      cursor: pointer;
+    }
+    .like, h2 {
+      margin: 0;
+      padding: 20px;
+      width: 200px;
+    }
+    h2 {
+      padding-bottom: 0;}
 
-
-</script>
-<!-- Edit-->
+</style>
 <body style="background-color: rgb(245,245,245);">
     <form method="post" action="/lookup">
     <nav class="navbar navbar-default">
@@ -31,7 +59,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/home">O2<span>Iraq</span></a>
+        <a class="navbar-brand" href="/home"><img src="../static/O2-IRAQ.png" href="#Logo"></a>
                 <input type="text" placeholder="Search" name="search" onclick="toggSearch()">
                 <i class="fas fa-search" for="Search"> </i>
 
@@ -96,8 +124,11 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="reaction2">
-                                <i class="fas fa-fire-alt"></i> <span>Care</span>
+                            <div class="reaction1">
+                                <div class="like liked" id="reaction" style="font-size: 20px;">
+                                    <i class="icon-fas-fa-tree" id="likess"></i>
+                                    <span id="like-count">99 <strong>likes</strong></span>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -111,9 +142,87 @@
 
          <!------------------End loop----------------->
 
-                    {% endfor %}
+                    <div class="col-md-3">
+                        <div class="reaction3">
+                            <input type="text" name="comment" placeholder="Type Your Comment">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shear">
+            <div class="image-shear">
+                <img src="../static/aya.jpg" alt="">
+                <span>Aya alani</span>
+                <span> 2021.1.12 4:00 PM </span>
+            </div>
+            <div class="info-shear">
+                <p>التلوث البيئي ـ موت بطيء يهدد حياة العراقيين
+يعاني العراق من نسبة تلوث كبيرة في الهواء تسببت فيها عوامل عدة منها ما هو راجع لعوامل طبيعية ومنها ما هو من صنع الإنسان في وقت السلم أو الحرب. دويتشه فيله تسلط الضوء على ما يعتبره المختصون "كارثة" تهدد حياة العراقيين.</p>
+                <img src="../static/p3.jpg" alt="...">
+            </div>
+            <div class="openin">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="reaction1">
+                            <div class="like liked" id="reaction" style="font-size: 20px;">
+                                <i class="icon-fas-fa-tree" id="likess"></i>
+                                <span id="like-count">99 <strong>likes</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="reaction3">
+                            <input type="text" name="comment" placeholder="Type Your Comment">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
 
 
+
+            <!-- REACH-->
+
+            <div class="col-md-4">
+                <div class="reach">
+                    <h3>Most Traded</h3>
+                    <div class="media">
+                        <div class="media-left media-middle">
+                        <a href="#">
+                            <img class="media-object" src="../static/profil.png" alt="...">
+                        </a>
+                        </div>
+                        <div class="media-body">
+                        <h4 class="media-heading">Middle aligned media</h4>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="media-left media-middle">
+                        <a href="#">
+                            <img class="media-object" src="../static/profil.png" alt="...">
+                        </a>
+                        </div>
+                        <div class="media-body">
+                        <h4 class="media-heading">Middle aligned media</h4>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="media-left media-middle">
+                        <a href="#">
+                            <img class="media-object" src="../static/profil.png" alt="...">
+                        </a>
+                        </div>
+                        <div class="media-body">
+                        <h4 class="media-heading">Middle aligned media</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
 
@@ -159,6 +268,57 @@
 <script src="../static/js1.js"></script>
 <script src="../static/js-search.js"></script>
 </body>
+<script>
+    let $likeButton = document.querySelector( ".like i" );
+    let $likeCount = document.getElementById( "like-count" );
+    let $likeWrapper = document.querySelector( ".like" );
+    let hasBeenClicked = false;
 
+    function likeClickHandler(){
+
+        let likes = $likeCount.innerText;
+        likes = parseInt( likes );
+
+        if ( hasBeenClicked ){
+
+            likes--;
+            $likeWrapper.classList.remove( "liked" );
+            $likeButton.classList.remove("fas");
+            $likeButton.classList.add("far");
+            hasBeenClicked = false;
+
+
+        } else {
+
+            likes++;
+            $likeWrapper.classList.add( "liked" );
+            $likeButton.classList.remove("far");
+            $likeButton.classList.add("fas");
+            hasBeenClicked = true;
+
+        }
+
+    $likeCount.innerHTML = likes + " <strong>likes</strong>";
+    let dict = {Number : likes};
+    $.ajax({
+        type: "POST",
+        url: "http://127.0.0.1:5000/home",
+        data: JSON.stringify(dict),
+        dataType: 'json',
+        contentType: "application/json;charset=UTF-8",
+        success: function (e) {
+                    console.log(e);
+                },
+        error: function(error) {
+                console.log(error);
+            }
+    });
+
+    }
+
+    $likeButton.addEventListener( "click", likeClickHandler );
+
+
+</script>
 
 </html>

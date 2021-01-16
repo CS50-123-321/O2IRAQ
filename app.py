@@ -15,11 +15,23 @@ from PIL import Image
 import datetime as dt
 #he
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'reds209ndsldssdsljdsldsdsljdsldksdksdsdfsfsfsfis'
+
 # my database
 db = SQL("sqlite:///identifier.sqlite")
 fa = FontAwesome(app)
 # Configure session to use filesystem (instead of signed cookies)
 # session config
+
+
+@app.after_request
+def after_request(response):
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Expires"] = 0
+    response.headers["Pragma"] = "no-cache"
+    return response
+
+
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config['SESSION_TYPE'] = 'filesystem'
@@ -67,8 +79,6 @@ def log_in():
         return render_template("login1.html")
 
 
-
-
 @app.route("/home", methods=["GET", "POST"])
 @login_required
 def home():
@@ -98,8 +108,10 @@ def home():
     posts.reverse()
     noti_posts = db.execute("select * from user_activity where user_id != 0 and user_id != :user_id ORDER BY post DESC LIMIT 30",user_id=session["user_id"])
     noti_posts.reverse()
-
-    return render_template("home.html", posts=posts, noti_posts=noti_posts, pic_call = pic_call, profile_pic= user_profile_pic)
+    global data
+    data = request.data
+    #return render_template("home.html", noti_posts = noti_posts)
+    return render_template("home.html", posts=posts, noti_posts=noti_posts,pic_call = pic_call[0]["profile_pic"])
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -175,12 +187,7 @@ def personal_pic():
 @login_required
 def profile():
     user_info = db.execute("select * from register where user_id = :user_id", user_id=session["user_id"])
-    if  user_info[0]['profile_pic'] is not None:
-         profile_pic = user_info[0]['profile_pic']
-    else:
-        profile_pic = db.execute("select profile_pic from register where user_id = 0")
-        profile_pic = profile_pic[0]["profile_pic"]
-
+    profile_pic = user_info[0]['profile_pic']
     user_name = user_info[0]['user_name']
     user_name = user_name.capitalize()
     user_city = user_info[0]['city']
@@ -193,9 +200,11 @@ def profile():
     print(posts)
     """counter_insert = db.execute("SELECT max(post_counter) FROM numbers where user_id = :user_id",
                                 user_id=session["user_id"])"""
-
+    global data2
+    data2 = request.data
+    print(data2)
     #return render_template("profile.html", user_name=user_name, user_city=user_city, user_bd=user_bd, posts=posts,counter_insert=counter_insert[0]["max(post_counter)"])
-    return render_template("profile.html", user_name=user_name, user_city=user_city, user_bd=user_bd, posts=posts,user_sex= user_sex, user_email=user_email, user_job=user_job, profile_pic = profile_pic)
+    return render_template("profile.html", user_name=user_name, user_city=user_city, user_bd=user_bd, posts=posts,user_sex= user_sex, user_email=user_email, user_job=user_job)
 
 @app.route("/activity", methods=["GET", "POST"])
 @login_required
@@ -206,20 +215,13 @@ def activity():
         content = request.form.get("text_area")
         image = request.files["myfile"]
         path = "C:/Users/ALFA/PycharmProjects/O2-IRAQ/static/pic/"
-
-
+        image1 = image.save(path + image.filename)
+        #pic_insert = db.execute("insert into user_activity(post_pic) values (:image)", image = image.filename)
+        #print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", pic_insert)
         name = db.execute("select user_name from register where user_id = :user_id", user_id=session["user_id"])
         name = name[0]["user_name"]
-        if not image:
-            content_insert = db.execute(
-                "insert into user_activity (post, user_name, user_id, date)values (:content,:name,:user_id, current_timestamp)",
-                content=content, name=name, user_id=session["user_id"])
-        else:
-            image1 = image.save(path + image.filename)
-            content_insert = db.execute(
-                "insert into user_activity (post, user_name, user_id, date, post_pic)values (:content,:name,:user_id, current_timestamp, :image)",
-                content=content, name=name, user_id=session["user_id"], image=image.filename)
-
+        content_insert = db.execute("insert into user_activity (post, user_name, user_id, date, post_pic)values (:content,:name,:user_id, current_timestamp, :image)",
+            content=content, name=name, user_id=session["user_id"],image = image.filename)
         # consider using forign key
         post_counter = db.execute("SELECT COUNT(post) FROM user_activity WHERE user_id=:user_id",
                                   user_id=session["user_id"])
@@ -274,7 +276,24 @@ def notification():
     #return render_template("Ins R
     return render_template("noti.html", posts=posts, current_user=current_user)
 
+
+@app.route('/likes')
+def likes():
+    l = data
+    print(l)
+    return data
+
+
+@app.route('/follow')
+def follow():
+    l2 = data2
+    print(l2)
+    return l2
+
+
+
+
 if __name__ == '__main__':
     app.jinja_env.auto_reload = True
     app.config['TEMPLATES_AUTO_RELOAD'] = True
-    app.run(debug=True, host='127.0.0.1')
+    app.run(host='127.0.0.1')

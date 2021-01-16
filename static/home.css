@@ -18,8 +18,13 @@ body{
 .navbar>.container .navbar-brand, 
 .navbar>.container-fluid .navbar-brand {
     font-size: 35px;
-    margin-top: 7px;
+    margin-top: -10px;
     color: rgb(241, 233, 233);
+}
+.navbar-brand img{
+    width: 189px;
+    height: 56px;
+    padding: 0 0 0;
 }
 .navbar>.container .navbar-brand span {
     color: rgb(44, 38, 38);
@@ -193,7 +198,7 @@ body{
     padding: 10px;
     height: 40px;
     width: 347px;
-    margin-top: 12px;
+    margin-top: 30px;
     outline: none;
 }
 
